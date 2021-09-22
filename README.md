@@ -28,15 +28,21 @@ $ rails db:create
 $ rails db:migrate
 ```
 
+###### To run specs
+```
+$ rspec
+```
+
 ## API details
 
 Run API by rails console
 
 1. API to create a course & its tutors
-
-HTTParty.post('http://localhost:3000/courses', query: {course: { name: "English1d6", details: "testung", tutors_attributes: [{ name: "Shubham12", email: "rajput.shubh1993@gmail.com"}]}})
-
+```
+HTTParty.post('http://localhost:3000/courses', query: {course: { title: "English1d6", details: "testung", tutors_attributes: [{ name: "Shubham12", email: "rajput.shubh1993@gmail.com"}]}})
+```
 2. GET API to list all the courses along with their tutors
-
+```
 response = HTTParty.get('http://localhost:3000/courses')
 response.to_a
+```
