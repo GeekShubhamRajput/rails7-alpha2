@@ -3,12 +3,11 @@ class CoursesController < ApplicationController
   def index
     @courses = Course.includes(:tutors)
 
-    render json: @courses
+    render json: @courses, include: ['tutors']
   end
 
   def create
     @course = Course.new(course_params)
-
     if @course.save
       render json: @course, status: :created, location: @course
     else
@@ -23,6 +22,6 @@ class CoursesController < ApplicationController
     end
 
     def course_params
-      params.require(:course).permit(:name, :details, tutors_attributes: [:name, :email])
+      params.require(:course).permit(:name, :details, tutors_attributes: [:id, :name, :email])
     end
 end

@@ -1,24 +1,42 @@
-# README
+## Course and Tutor
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### Tasks
+###### Given 2 models - Course & Tutor 
 
-Things you may want to cover:
+1. A course can have many tutors. 
+2. Tutor can teach one course only. 
 
-* Ruby version
+###### Write: 
+1. Common POST API to create a course & its tutors 
+2. GET API to list all the courses along with their tutors 
 
-* System dependencies
 
-* Configuration
+## Steps are necessary to get the application up and running.
 
-* Database creation
+###### Ruby/rails version 
+ruby version 3.0.0
+rails version 7.0.0.alpha2
 
-* Database initialization
+###### run bundle command
+```
+$ bundle install
+```
 
-* How to run the test suite
+###### create and migrate database
+```
+$ rails db:create
+$ rails db:migrate
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## API details
 
-* Deployment instructions
+Run API by rails console
 
-* ...
+1. API to create a course & its tutors
+
+HTTParty.post('http://localhost:3000/courses', query: {course: { name: "English1d6", details: "testung", tutors_attributes: [{ name: "Shubham12", email: "rajput.shubh1993@gmail.com"}]}})
+
+2. GET API to list all the courses along with their tutors
+
+response = HTTParty.get('http://localhost:3000/courses')
+response.to_a
